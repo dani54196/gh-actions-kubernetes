@@ -18,9 +18,9 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
-    - name: Copy files to EC2
+    - name: Pull latest changes to EC2
       run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} 'git clone https://github.com/username/repo.git ~/gh-actions-kubernetes'
+        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} 'cd ~/gh-actions-kubernetes && git pull'
 
     - name: Deploy Docker Compose on EC2
       run: |
