@@ -1,14 +1,11 @@
-# Use the official Nginx image
-FROM nginx:latest
+# Use the official Nginx image from the Docker Hub
+FROM nginx:alpine
 
-# Copy the custom Nginx configuration file
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copy the index.html file to the Nginx document root
+# Copy the static HTML file to the Nginx default directory
 COPY index.html /usr/share/nginx/html/index.html
 
-# Expose port 80
+# Expose port 80 to the outside world
 EXPOSE 80
 
-# Start Nginx in the foreground
+# Start Nginx when the container launches
 CMD ["nginx", "-g", "daemon off;"]
