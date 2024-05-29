@@ -20,7 +20,7 @@ jobs:
 
     - name: Copy files to EC2
       run: |
-        scp -o StrictHostKeyChecking=no -r . ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/app
+        scp -o StrictHostKeyChecking=no -r $(pwd) ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:~/app
 
     - name: Deploy Docker Compose on EC2
       run: |
